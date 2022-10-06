@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vacation Time</title>
+</head>
+<body>
+<h1>Ashok selects a vacation</h1>
+<h2>Getting input</h2>
+
+<form>
+    <div class="form-group">
+        <input type="checkbox" id="byAir" name="vacationtype" value="true">
+        <label for="airway">Travel by Air</label></div> <br>
+        <div class="form-group">
+        <input type="checkbox" id="domesticTravel" name="vacationtype" value="true">
+        <label for="domestic">Domestic</label> </div><br>
+        <div class="form-group">
+        <input type="checkbox" id="toResort" name="vacationtype" value="false">
+        <label for="resorts">Resort</label> </div><br>
+        <div class="form-group">
+        <input type="button" class="btn btn-warning" value="Select a vacation" onclick="selectVacation()">
+    </div>
+</form>
+<p id="result">Vacation mode will be seen here </p>
+
+
+<script> 
+var my_vacation = {};
+function selectVacation(){
+    my_vacation = {}
+    let air = document.getElementById("byAir").checked
+    let domestic = document.getElementById("domesticTravel").checked
+    let resort = document.getElementById("toResort").checked
+    if(air)
+        my_vacation.byair = true;
+    else
+        my_vacation.byair = false;
+    if(domestic)
+        my_vacation.domesticTravel = true;
+    else
+        my_vacation.domesticTravel = false;
+    if(resort)
+        my_vacation.toResort = true;
+    else
+        my_vacation.toResort = false;
+
+    document.getElementById("result").innerHTML=JSON.stringify(my_vacation)
+}
+
+</script>
+
+</body>
+</html> 
