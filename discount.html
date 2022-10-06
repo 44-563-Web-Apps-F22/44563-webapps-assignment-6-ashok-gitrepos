@@ -17,27 +17,55 @@
 
     <input type="button" onclick="discount()" value="Apply discount">
 </form>
-
-
 <p id="result">This text will be replaced </p>
 
-<script> 
+<div class="container"></div>
+<form>
+    <div class="container">
+        <input type="radio" id="multiplication" value="times"  onclick="chooseOp()">
+        <label for="Multiplication">*</label></br>
+    
+        <input type="radio" id="division"  value="divide" onclick="chooseOp()">
+        <label for="Division">/</label></br>
+    
+        <input type="radio" id="exponent"  value="exponent" onclick="chooseOp()">
+        <label for="Exponents">**</label></br>
 
-function discount(){
-    console.log("Getting form values")
-    baseValue = document.getElementById("form1_base").value
-    tdiscount = document.getElementById("form1_discount").value
-    var result="";
-    for(let n=1;n<=5;n++){
-        result+= (baseValue*n)-((baseValue*n)*tdiscount/100)
-        result+=" "
-        }
-     document.getElementById("result").innerHTML="Discounted amounts for base "+baseValue+" are "+result
+    </div>
+    </form>
+    <p id="result1">Result will be seen here....!!!!</p><br>
+    </div>
+
+    <script> 
+    function discount(){
+        console.log("Getting form values")
+        var baseValue = document.getElementById("form1_base").value
+        var tdiscount = document.getElementById("form1_discount").value
+        var result="";
+        for(let n=1;n<=5;n++){
+            result+= (baseValue*n)-((baseValue*n)*tdiscount/100)
+            result+=" "
+            }
+        document.getElementById("result").innerHTML="Discounted amounts for base "+baseValue+" are "+result
+                    
+        }      
+
+    function chooseOp(){
+        var baseValue = document.getElementById("form1_base").value;
+        var discountValue = document.getElementById("form1_discount").value;
+            if(document.getElementById("multiplication").checked){
+                document.getElementById("result1").innerHTML="Amount*discount= "+baseValue*discountValue
+            }
+            else if(document.getElementById("division").checked){
                 
-    }      
-  
+                document.getElementById("result1").innerHTML="Amount/discount= "+baseValue/discountValue
+            }
+            else if(document.getElementById("exponent").checked){
+                document.getElementById("result1").innerHTML="Amount*discount= "+Math.pow(baseValue,discountValue)
+            }
+    }
 
-</script>
+    </script>
 
 </body>
 </html> 
